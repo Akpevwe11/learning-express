@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/Akpevwe11/learning-express#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mongoose": "^8.8.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",
