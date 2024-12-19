@@ -32,3 +32,51 @@ export const getAllUsers =  async (req, res) => {
         res.send(error); 
     }
 }
+
+
+
+export const getUserByID  = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.json(user);
+
+    } catch (error) {
+        res.send(error);
+    }
+
+};
+
+// Method to update a contact 
+
+export const updateUser = async (req, res) => {
+
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
+        res.json(user);
+
+    } catch(error) {
+        res.send(error); 
+    }
+};
+
+// Method to delete a user from the collection 
+
+
+export const deleteUser = async (req, res) => {
+
+   try {
+    const user = await User.deleteOne({_id: req.params.id});
+    if (user.deletedCount === 0) {
+        return res.status(404).json({message: "User not found"}); 
+    }
+
+    res.json({message: "User deleted successfully"});
+   } catch (err) {
+    res.send(err);
+   }
+
+}; 
+
+
+
+
